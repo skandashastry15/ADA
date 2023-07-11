@@ -1,0 +1,24 @@
+bool transverse(struct TreeNode* left, struct TreeNode* right)
+{
+    if(left == NULL && right == NULL)
+    {
+        return 1;
+    }
+    else if(left == NULL || right == NULL)
+    {
+        return 0;
+    }
+    else if(left->val != right->val)
+    {
+        return 0;
+    }
+    
+    return transverse(left->left, right->right) && transverse(left->right, right->left);
+}
+
+bool isSymmetric(struct TreeNode* root){
+    if (root==NULL)
+        return 1;
+    
+    return transverse(root->left,root->right);
+}
